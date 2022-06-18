@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Jquery Plugin: Table Convert Number</title>
+
+<style>
+    pre {cursor: hand;}
+</style>
+
+</head>
+<body>
+
+<center><h1>jQuery Plugin: Convert Table Column Numbers</h1></center>
+
+<div class="text-center">
+
+    This plugin allows you to convert numbers a column in an html table. You can also chain the table with this plugin to resolve conversion methods.
+    Divide the argument of the jQuery function with ":" for the first being the conversion used, and the second indicating the column you need to convert.
+
+    Examples: 
+    <div class="example">
+        <pre data-code="toPercent:2">
+            $("table").convertNumber("toPercent:2");
+        </pre>
+    </div>
+    <div class="example">
+        <pre data-code="toDecimal-2:2">
+            $("table").convertNumber("toDecimal-2:2");
+        </pre>
+    </div>
+    <div class="example">
+        <pre data-code="lengthConvert-meterTOcentimeter:2,toDecimal-2:2">
+            $("table").convertNumber("lengthConvert-meterTOcentimeter:2").convertNumber("toDecimal-2:2");
+        </pre>
+    </div>
+    <div class="example">
+        <pre data-code="toDecimal-2:2,toCurrency-dollar:2">
+            $("table").convertNumber("toDecimal-2:2").convertNumber("toCurrency-dollar:2");
+        </pre>
+    </div>
+</div>
+<table id="demoTable">
+
+    <thead><tr><th>Name</th><th>Value</th></tr></thead>
+    <tbody>
+        <tr>
+            <td>Name 1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Name 2</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Name 2</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Name 3</td>
+            <td>20</td>
+        </tr>
+    </tbody>
+
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="jquery-table-convert.js"></script>
+<script>
+   $(document).ready(function(){
+    window.table = $("#demoTable").html();
+        $("#demoTable").convertNumber("toDecimal-2:1").convertNumber("lengthConvert-meterTOcentimeter");
+
+        $("pre").on("click", function(e){
+            $("#demoTable").html(window.table);
+            e.preventDefault();
+            var functionData = $(this).attr("data-code");
+            functionData = functionData.split(",");
+            $.each(functionData, function(i,val){
+                $("#demoTable").convertNumber(val);
+            });
+        });
+    });
+</script>
+
+</script>
+</body>
+</html>
