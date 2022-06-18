@@ -1,5 +1,5 @@
 # jquery-table-convert-plugin
- <h1>jQuery Plugin: Convert Table Column Numbers</h1>
+ <h3>jQuery Plugin: Convert Table Column Numbers</h3>
         <p class="lead">This plugin allows you to convert numbers a column in an html table. You can also chain the table with this plugin to resolve conversion methods.<br>
         Divide the argument of the jQuery function with ":" for the first being the conversion used, and the second indicating the column you need to convert.</p>
         <p>Examples:</p>
